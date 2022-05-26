@@ -15,7 +15,6 @@ const Home: FC = () => {
       console.log(res);
     }).catch(err => {
       console.log(err)
-      // handle error
     })
   return (
     <View className='home'>
