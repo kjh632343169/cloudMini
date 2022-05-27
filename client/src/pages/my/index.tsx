@@ -12,10 +12,6 @@ const My: FC = () => {
       jumpLink: '',
     },
     {
-      title: '打赏项目',
-      jumpLink: '',
-    },
-    {
       title: '意见反馈',
       jumpLink: '',
     },

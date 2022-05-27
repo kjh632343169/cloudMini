@@ -1,6 +1,7 @@
 import { View } from '@tarojs/components';
 import { FC } from 'react';
 import Taro from '@tarojs/taro';
+import Sentence from '../../../src/component/Sentence';
 import './index.scss';
 
 //  主页
@@ -18,6 +19,7 @@ const Home: FC = () => {
     })
   return (
     <View className='home'>
+      <Sentence />
       <View className='home-header'>小程序功能简介</View>
       <View className='home-content'>
         <View>前N条备忘录</View>
