@@ -1,8 +1,8 @@
-import { FC, useState, useEffect } from "react";
-import Taro from "@tarojs/taro";
-import { View } from "@tarojs/components";
-import request from "../../src/pages/utils/request";
-
+import { FC, useState, useEffect } from 'react';
+import Taro from '@tarojs/taro';
+import { View } from '@tarojs/components';
+import request from '../../src/pages/utils/request';
+import { baseCloudRequest } from '../pages/utils/api/query';
 
 
 // todo 要给一句默认的,还是先请求一遍?
@@ -21,11 +21,17 @@ const Sentence: FC = () => {
         }
     }
 
+    const testCloud = async() => {
+        const result = await baseCloudRequest()
+        console.log(result);
+    }
+
     useEffect(() => {
+        testCloud()
         getData();
         const timer = setInterval(() => {
            getData()
-        }, 5000)
+        }, 10000)
         return () => {
             clearInterval(timer)
         }

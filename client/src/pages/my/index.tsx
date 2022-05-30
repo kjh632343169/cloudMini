@@ -23,16 +23,16 @@ const My: FC = () => {
 
   return (
     <>
-      <View className="my-header">
-        <View className="avatar">
-          <OpenData type="userAvatarUrl" />
+      <View className='my-header'>
+        <View className='avatar'>
+          <OpenData type='userAvatarUrl' />
         </View>
-        <View className="name">
-          <OpenData type="userNickName" />
+        <View className='name'>
+          <OpenData type='userNickName' />
         </View>
       </View>
       <View>创建好的备忘录和消息提醒入口</View>
-      <View className="my-bottom">
+      <View className='my-bottom'>
         {menuList.map(item => {
           return <View>{item.title}</View>;
         })}

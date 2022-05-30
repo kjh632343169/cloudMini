@@ -1,4 +1,4 @@
-import Taro from "@tarojs/taro";
+import Taro from '@tarojs/taro';
 
 /** HTTP 请求方法 */
 interface Method {
@@ -24,5 +24,10 @@ interface requestOptions {
 
 // todo 增加请求错误提示 等等内容
 export default async (options: requestOptions) => {
-  return await Taro.request(options);
+  console.log(options);
+  try {
+    return await Taro.request(options);
+  } catch (error) {
+    console.log(error);
+  }
 };

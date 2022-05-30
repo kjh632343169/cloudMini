@@ -7,20 +7,20 @@ const db = cloud.database()
 // 通用crud
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const { dbName = '', searchParam = {}, type="query" } = event;
+  const { dbName, searchParam={}, updateParam={}, pageParam={}, type } = event;
+  const dataBase = await db.collection(dbName);
   switch (type) {
-    case "query":
-      return await db.collection(dbName).where(searchParam).get();
-    case "delete":
+    case "QUERY":
+      return await dataBase.where(searchParam).get();
+    case "REMOVE":
       // 删除
-      break
-    case "add":
+      return await dataBase.where(searchParam).remove();
+    case "ADD":
       // 添加
-      break
-    case "update":
+      return await dataBase.add({data:updateParam});
+    case "UPDATE":
       // 更新
-      break
-    
+      return await dataBase.where(searchParam).update({data:updateParam});
     default:
       break;
   }
