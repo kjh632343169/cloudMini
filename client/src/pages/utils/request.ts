@@ -24,7 +24,6 @@ interface requestOptions {
 
 // todo 增加请求错误提示 等等内容
 export default async (options: requestOptions) => {
-  console.log(options);
   try {
     return await Taro.request(options);
   } catch (error) {

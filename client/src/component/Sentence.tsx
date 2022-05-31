@@ -1,9 +1,10 @@
 import { FC, useState, useEffect } from 'react';
-import Taro from '@tarojs/taro';
+import Taro, { useDidHide, useDidShow } from '@tarojs/taro';
 import { View } from '@tarojs/components';
-import request from '../../src/pages/utils/request';
 import { baseCloudRequest } from '../pages/utils/api/query';
+import { getSentenceData } from '../pages/utils/api/api';
 
+let timer
 
 // todo 要给一句默认的,还是先请求一遍?
 const Sentence: FC = () => {
@@ -11,15 +12,27 @@ const Sentence: FC = () => {
     const [from, setFrom] = useState('')
 
     const getData = async () => {
-        const result = await request({
-            url: 'https://v1.hitokoto.cn/?c=b',
-        })
+        const result = await getSentenceData()
         if (result) {
             console.log(result);
             setData(result.data.hitokoto);
             setFrom(result.data.from);
         }
     }
+    const setTimer = () => {
+        timer = setInterval(() => {
+            getData()
+        }, 10000)
+    }
+
+    useDidShow(() => {
+       !timer && setTimer();
+     })
+    
+    useDidHide(() => {
+       timer && clearInterval(timer)
+    })
+
 
     const testCloud = async() => {
         const result = await baseCloudRequest()
@@ -29,9 +42,6 @@ const Sentence: FC = () => {
     useEffect(() => {
         testCloud()
         getData();
-        const timer = setInterval(() => {
-           getData()
-        }, 10000)
         return () => {
             clearInterval(timer)
         }

@@ -46,5 +46,8 @@ const baseCloudRequest = async (param: Param=initParam) => {
 };
 
 export  {
-   baseCloudRequest
+  baseCloudRequest,
+  RequestTypeData,
+  DbName,
+  CloudFunctionName
 };
