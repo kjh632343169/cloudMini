@@ -1,11 +1,11 @@
-import { Component } from "react";
-import Taro from "@tarojs/taro";
-import "./app.scss";
+import { Component } from 'react';
+import Taro from '@tarojs/taro';
+import './app.scss';
 
 class App extends Component {
   componentDidMount() {
     Taro.cloud.init({
-      env: "dev-eqw8q"
+      env: 'dev-eqw8q'
     });
   }
 

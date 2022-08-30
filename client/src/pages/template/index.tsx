@@ -13,7 +13,6 @@ export default function TabBar() {
       <View>创建好的备忘录和消息提醒入口</View>
       <View>备忘录模板和创建</View>
       <View>消息模板和创建</View>
-
       <View>我的备忘录</View>
       <View>分类</View>
       <Button>新建备忘录</Button>
